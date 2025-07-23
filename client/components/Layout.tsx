@@ -1,7 +1,7 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Users, Bell } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Link, useLocation } from "react-router-dom";
+import { Users, Bell } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -25,11 +25,17 @@ export default function Layout({ children }: LayoutProps) {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <Users className="w-5 h-5 text-white" />
                 </div>
-                <Link to="/" className="text-2xl font-bold text-gray-900 hover:text-primary">
+                <Link
+                  to="/"
+                  className="text-2xl font-bold text-gray-900 hover:text-primary"
+                >
                   Associate 360
                 </Link>
               </div>
-              <Badge variant="secondary" className="bg-blue-50 text-blue-700 border-blue-200">
+              <Badge
+                variant="secondary"
+                className="bg-blue-50 text-blue-700 border-blue-200"
+              >
                 Asset Management Platform
               </Badge>
             </div>
@@ -52,62 +58,62 @@ export default function Layout({ children }: LayoutProps) {
       <nav className="bg-white border-b border-gray-200">
         <div className="px-6">
           <div className="flex space-x-8">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                isActive('/') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                isActive("/")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Dashboard
             </Link>
-            <Link 
-              to="/jobs" 
+            <Link
+              to="/jobs"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                location.pathname.startsWith('/jobs') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                location.pathname.startsWith("/jobs")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Job Management
             </Link>
-            <Link 
-              to="/procurement" 
+            <Link
+              to="/procurement"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                location.pathname.startsWith('/procurement') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                location.pathname.startsWith("/procurement")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Procurement
             </Link>
-            <Link 
-              to="/assets" 
+            <Link
+              to="/assets"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                location.pathname.startsWith('/assets') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                location.pathname.startsWith("/assets")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Asset Management
             </Link>
-            <Link 
-              to="/clearance" 
+            <Link
+              to="/clearance"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                location.pathname.startsWith('/clearance') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                location.pathname.startsWith("/clearance")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Clearance
             </Link>
-            <Link 
-              to="/reports" 
+            <Link
+              to="/reports"
               className={`border-b-2 py-4 px-1 text-sm font-medium ${
-                location.pathname.startsWith('/reports') 
-                  ? 'border-primary text-primary' 
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                location.pathname.startsWith("/reports")
+                  ? "border-primary text-primary"
+                  : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
               }`}
             >
               Reports
@@ -117,9 +123,7 @@ export default function Layout({ children }: LayoutProps) {
       </nav>
 
       {/* Main Content */}
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </div>
   );
 }

@@ -1,66 +1,87 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Badge } from '@/components/ui/badge';
-import { Calendar, Upload, Plus, X, Building, Users, Calendar as CalendarIcon, FileText } from 'lucide-react';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import {
+  Calendar,
+  Upload,
+  Plus,
+  X,
+  Building,
+  Users,
+  Calendar as CalendarIcon,
+  FileText,
+} from "lucide-react";
 
 export default function JobCreate() {
   const [formData, setFormData] = useState({
-    hodName: '',
-    department: 'IT Department', // System generated
-    expectedExperience: '',
-    doj: '',
-    jobTitle: '',
-    jobDescription: '',
-    skillsRequired: '',
+    hodName: "",
+    department: "IT Department", // System generated
+    expectedExperience: "",
+    doj: "",
+    jobTitle: "",
+    jobDescription: "",
+    skillsRequired: "",
     hardwareRequirements: [] as string[],
     softwareRequirements: [] as string[],
-    approvalDocument: null as File | null
+    approvalDocument: null as File | null,
   });
 
-  const [newHardware, setNewHardware] = useState('');
-  const [newSoftware, setNewSoftware] = useState('');
+  const [newHardware, setNewHardware] = useState("");
+  const [newSoftware, setNewSoftware] = useState("");
 
   const hardwareOptions = [
-    'Laptop - Windows',
-    'Laptop - MacBook',
-    'Desktop PC',
-    'Mobile Phone - Android',
-    'Mobile Phone - iPhone',
-    'Tablet - iPad',
-    'Monitor - 24 inch',
-    'Monitor - 27 inch',
-    'Keyboard & Mouse',
-    'Headset',
-    'Webcam',
-    'Docking Station'
+    "Laptop - Windows",
+    "Laptop - MacBook",
+    "Desktop PC",
+    "Mobile Phone - Android",
+    "Mobile Phone - iPhone",
+    "Tablet - iPad",
+    "Monitor - 24 inch",
+    "Monitor - 27 inch",
+    "Keyboard & Mouse",
+    "Headset",
+    "Webcam",
+    "Docking Station",
   ];
 
   const softwareOptions = [
-    'Microsoft Office 365',
-    'Adobe Creative Suite',
-    'Visual Studio Code',
-    'IntelliJ IDEA',
-    'Slack',
-    'Zoom',
-    'Figma',
-    'Jira',
-    'Confluence',
-    'Git',
-    'Docker',
-    'AWS CLI'
+    "Microsoft Office 365",
+    "Adobe Creative Suite",
+    "Visual Studio Code",
+    "IntelliJ IDEA",
+    "Slack",
+    "Zoom",
+    "Figma",
+    "Jira",
+    "Confluence",
+    "Git",
+    "Docker",
+    "AWS CLI",
   ];
 
   const addHardware = (item: string) => {
     if (!formData.hardwareRequirements.includes(item)) {
       setFormData({
         ...formData,
-        hardwareRequirements: [...formData.hardwareRequirements, item]
+        hardwareRequirements: [...formData.hardwareRequirements, item],
       });
     }
   };
@@ -68,7 +89,9 @@ export default function JobCreate() {
   const removeHardware = (item: string) => {
     setFormData({
       ...formData,
-      hardwareRequirements: formData.hardwareRequirements.filter(h => h !== item)
+      hardwareRequirements: formData.hardwareRequirements.filter(
+        (h) => h !== item,
+      ),
     });
   };
 
@@ -76,7 +99,7 @@ export default function JobCreate() {
     if (!formData.softwareRequirements.includes(item)) {
       setFormData({
         ...formData,
-        softwareRequirements: [...formData.softwareRequirements, item]
+        softwareRequirements: [...formData.softwareRequirements, item],
       });
     }
   };
@@ -84,39 +107,49 @@ export default function JobCreate() {
   const removeSoftware = (item: string) => {
     setFormData({
       ...formData,
-      softwareRequirements: formData.softwareRequirements.filter(s => s !== item)
+      softwareRequirements: formData.softwareRequirements.filter(
+        (s) => s !== item,
+      ),
     });
   };
 
   const addCustomHardware = () => {
-    if (newHardware.trim() && !formData.hardwareRequirements.includes(newHardware.trim())) {
+    if (
+      newHardware.trim() &&
+      !formData.hardwareRequirements.includes(newHardware.trim())
+    ) {
       addHardware(newHardware.trim());
-      setNewHardware('');
+      setNewHardware("");
     }
   };
 
   const addCustomSoftware = () => {
-    if (newSoftware.trim() && !formData.softwareRequirements.includes(newSoftware.trim())) {
+    if (
+      newSoftware.trim() &&
+      !formData.softwareRequirements.includes(newSoftware.trim())
+    ) {
       addSoftware(newSoftware.trim());
-      setNewSoftware('');
+      setNewSoftware("");
     }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Auto-generate Job ID
-    const jobId = `JOB-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 10000)).padStart(4, '0')}`;
-    
-    console.log('Job Posted:', {
+    const jobId = `JOB-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 10000)).padStart(4, "0")}`;
+
+    console.log("Job Posted:", {
       jobId,
       ...formData,
-      status: 'Pending Approval',
+      status: "Pending Approval",
       createdAt: new Date().toISOString(),
-      createdBy: 'John Manager'
+      createdBy: "John Manager",
     });
-    
+
     // Route to Procurement inbox
-    alert(`Job posted successfully! Job ID: ${jobId}\nRouted to Procurement inbox for processing.`);
+    alert(
+      `Job posted successfully! Job ID: ${jobId}\nRouted to Procurement inbox for processing.`,
+    );
   };
 
   return (
@@ -124,7 +157,9 @@ export default function JobCreate() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Job Posting</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Create Job Posting
+          </h1>
           <p className="text-gray-600">
             Post a new position for off-role employees under T&M agreement
           </p>
@@ -149,12 +184,14 @@ export default function JobCreate() {
                   <Input
                     id="hodName"
                     value={formData.hodName}
-                    onChange={(e) => setFormData({...formData, hodName: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, hodName: e.target.value })
+                    }
                     placeholder="Enter HOD name"
                     required
                   />
                 </div>
-                
+
                 <div>
                   <Label htmlFor="department">Department</Label>
                   <div className="relative">
@@ -177,15 +214,23 @@ export default function JobCreate() {
                   <Input
                     id="jobTitle"
                     value={formData.jobTitle}
-                    onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, jobTitle: e.target.value })
+                    }
                     placeholder="e.g., Senior Software Developer"
                     required
                   />
                 </div>
-                
+
                 <div>
-                  <Label htmlFor="expectedExperience">Expected Experience</Label>
-                  <Select onValueChange={(value) => setFormData({...formData, expectedExperience: value})}>
+                  <Label htmlFor="expectedExperience">
+                    Expected Experience
+                  </Label>
+                  <Select
+                    onValueChange={(value) =>
+                      setFormData({ ...formData, expectedExperience: value })
+                    }
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Select experience level" />
                     </SelectTrigger>
@@ -207,7 +252,9 @@ export default function JobCreate() {
                     id="doj"
                     type="date"
                     value={formData.doj}
-                    onChange={(e) => setFormData({...formData, doj: e.target.value})}
+                    onChange={(e) =>
+                      setFormData({ ...formData, doj: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -229,7 +276,9 @@ export default function JobCreate() {
                 <Textarea
                   id="jobDescription"
                   value={formData.jobDescription}
-                  onChange={(e) => setFormData({...formData, jobDescription: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, jobDescription: e.target.value })
+                  }
                   placeholder="Describe the role, responsibilities, and key requirements..."
                   rows={6}
                   required
@@ -241,7 +290,9 @@ export default function JobCreate() {
                 <Textarea
                   id="skillsRequired"
                   value={formData.skillsRequired}
-                  onChange={(e) => setFormData({...formData, skillsRequired: e.target.value})}
+                  onChange={(e) =>
+                    setFormData({ ...formData, skillsRequired: e.target.value })
+                  }
                   placeholder="List required technical and soft skills..."
                   rows={4}
                 />
@@ -263,9 +314,17 @@ export default function JobCreate() {
                   <Button
                     key={item}
                     type="button"
-                    variant={formData.hardwareRequirements.includes(item) ? "default" : "outline"}
+                    variant={
+                      formData.hardwareRequirements.includes(item)
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
-                    onClick={() => formData.hardwareRequirements.includes(item) ? removeHardware(item) : addHardware(item)}
+                    onClick={() =>
+                      formData.hardwareRequirements.includes(item)
+                        ? removeHardware(item)
+                        : addHardware(item)
+                    }
                     className="justify-start"
                   >
                     {item}
@@ -278,9 +337,16 @@ export default function JobCreate() {
                   <Label>Selected Hardware:</Label>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {formData.hardwareRequirements.map((item) => (
-                      <Badge key={item} variant="secondary" className="flex items-center gap-1">
+                      <Badge
+                        key={item}
+                        variant="secondary"
+                        className="flex items-center gap-1"
+                      >
                         {item}
-                        <X className="w-3 h-3 cursor-pointer" onClick={() => removeHardware(item)} />
+                        <X
+                          className="w-3 h-3 cursor-pointer"
+                          onClick={() => removeHardware(item)}
+                        />
                       </Badge>
                     ))}
                   </div>
@@ -292,7 +358,10 @@ export default function JobCreate() {
                   placeholder="Add custom hardware..."
                   value={newHardware}
                   onChange={(e) => setNewHardware(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomHardware())}
+                  onKeyPress={(e) =>
+                    e.key === "Enter" &&
+                    (e.preventDefault(), addCustomHardware())
+                  }
                 />
                 <Button type="button" onClick={addCustomHardware}>
                   <Plus className="w-4 h-4" />
@@ -315,9 +384,17 @@ export default function JobCreate() {
                   <Button
                     key={item}
                     type="button"
-                    variant={formData.softwareRequirements.includes(item) ? "default" : "outline"}
+                    variant={
+                      formData.softwareRequirements.includes(item)
+                        ? "default"
+                        : "outline"
+                    }
                     size="sm"
-                    onClick={() => formData.softwareRequirements.includes(item) ? removeSoftware(item) : addSoftware(item)}
+                    onClick={() =>
+                      formData.softwareRequirements.includes(item)
+                        ? removeSoftware(item)
+                        : addSoftware(item)
+                    }
                     className="justify-start"
                   >
                     {item}
@@ -330,9 +407,16 @@ export default function JobCreate() {
                   <Label>Selected Software:</Label>
                   <div className="flex flex-wrap gap-2 mt-2">
                     {formData.softwareRequirements.map((item) => (
-                      <Badge key={item} variant="secondary" className="flex items-center gap-1">
+                      <Badge
+                        key={item}
+                        variant="secondary"
+                        className="flex items-center gap-1"
+                      >
                         {item}
-                        <X className="w-3 h-3 cursor-pointer" onClick={() => removeSoftware(item)} />
+                        <X
+                          className="w-3 h-3 cursor-pointer"
+                          onClick={() => removeSoftware(item)}
+                        />
                       </Badge>
                     ))}
                   </div>
@@ -344,7 +428,10 @@ export default function JobCreate() {
                   placeholder="Add custom software..."
                   value={newSoftware}
                   onChange={(e) => setNewSoftware(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomSoftware())}
+                  onKeyPress={(e) =>
+                    e.key === "Enter" &&
+                    (e.preventDefault(), addCustomSoftware())
+                  }
                 />
                 <Button type="button" onClick={addCustomSoftware}>
                   <Plus className="w-4 h-4" />
@@ -376,7 +463,13 @@ export default function JobCreate() {
                       PDF, DOC, or DOCX up to 10MB
                     </span>
                   </label>
-                  <input id="file-upload" name="file-upload" type="file" className="sr-only" accept=".pdf,.doc,.docx" />
+                  <input
+                    id="file-upload"
+                    name="file-upload"
+                    type="file"
+                    className="sr-only"
+                    accept=".pdf,.doc,.docx"
+                  />
                 </div>
               </div>
             </CardContent>
@@ -387,9 +480,7 @@ export default function JobCreate() {
             <Button type="button" variant="outline">
               Save as Draft
             </Button>
-            <Button type="submit">
-              Submit Job Posting
-            </Button>
+            <Button type="submit">Submit Job Posting</Button>
           </div>
         </form>
       </div>
