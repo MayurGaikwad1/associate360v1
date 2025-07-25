@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import JobCreate from "./pages/JobCreate";
+import JobManagement from "./pages/JobManagement";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 
