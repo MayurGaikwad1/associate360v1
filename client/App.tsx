@@ -27,22 +27,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/jobs" element={<JobManagement />} />
             <Route path="/jobs/create" element={<JobCreate />} />
-            <Route
-              path="/procurement"
-              element={
-                <Placeholder
-                  title="Procurement Inbox"
-                  description="Process job requests and manage candidate data"
-                  features={[
-                    "Receive job details from managers",
-                    "Fill candidate information post-TL selection",
-                    "Update Date of Joining",
-                    "Trigger auto-tickets for Asset Allocation",
-                    "Generate Domain ID and Email creation requests",
-                  ]}
-                />
-              }
-            />
+            <Route path="/procurement" element={<Procurement />} />
             <Route
               path="/assets"
               element={
