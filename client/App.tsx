@@ -47,22 +47,7 @@ const App = () => (
                 />
               }
             />
-            <Route
-              path="/clearance"
-              element={
-                <Placeholder
-                  title="Clearance Management"
-                  description="Handle employee offboarding and asset clearance"
-                  features={[
-                    "Filter by employee ID, status, LWD range",
-                    "Asset matching and recovery tracking",
-                    "Clearance status management",
-                    "Bulk clearance processing",
-                    "Integration with offboarding workflows",
-                  ]}
-                />
-              }
-            />
+            <Route path="/clearance" element={<ClearanceManagement />} />
             <Route
               path="/clearance/bulk"
               element={
