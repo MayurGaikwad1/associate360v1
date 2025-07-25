@@ -24,22 +24,7 @@ const App = () => (
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route
-              path="/jobs"
-              element={
-                <Placeholder
-                  title="Job Management"
-                  description="Manage all job postings and hiring workflows"
-                  features={[
-                    "View all active job postings",
-                    "Track application status",
-                    "Manage candidate pipeline",
-                    "Approval workflows",
-                    "Integration with JIRA ticketing",
-                  ]}
-                />
-              }
-            />
+            <Route path="/jobs" element={<JobManagement />} />
             <Route path="/jobs/create" element={<JobCreate />} />
             <Route
               path="/procurement"
