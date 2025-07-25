@@ -29,22 +29,7 @@ const App = () => (
             <Route path="/jobs" element={<JobManagement />} />
             <Route path="/jobs/create" element={<JobCreate />} />
             <Route path="/procurement" element={<Procurement />} />
-            <Route
-              path="/assets"
-              element={
-                <Placeholder
-                  title="Asset Management"
-                  description="Comprehensive asset lifecycle management"
-                  features={[
-                    "Asset allocation and tracking",
-                    "Post-joining equipment distribution",
-                    "Asset returns and replacements",
-                    "Serial number tracking",
-                    "Integration with Asset Management Portal",
-                  ]}
-                />
-              }
-            />
+            <Route path="/assets" element={<AssetManagement />} />
             <Route
               path="/assets/allocate"
               element={
