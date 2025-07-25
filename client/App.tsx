@@ -12,6 +12,7 @@ import JobCreate from "./pages/JobCreate";
 import JobManagement from "./pages/JobManagement";
 import Procurement from "./pages/Procurement";
 import AssetManagement from "./pages/AssetManagement";
+import ClearanceManagement from "./pages/ClearanceManagement";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 
