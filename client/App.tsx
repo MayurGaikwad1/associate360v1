@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import JobCreate from "./pages/JobCreate";
 import JobManagement from "./pages/JobManagement";
 import Procurement from "./pages/Procurement";
+import AssetManagement from "./pages/AssetManagement";
 import Placeholder from "./pages/Placeholder";
 import NotFound from "./pages/NotFound";
 
