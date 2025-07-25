@@ -65,22 +65,7 @@ const App = () => (
                 />
               }
             />
-            <Route
-              path="/reports"
-              element={
-                <Placeholder
-                  title="Reports & Analytics"
-                  description="Generate comprehensive reports and insights"
-                  features={[
-                    "Associate-level asset history",
-                    "Utilization analytics",
-                    "Cost tracking reports",
-                    "Compliance audit logs",
-                    "Custom report generation",
-                  ]}
-                />
-              }
-            />
+            <Route path="/reports" element={<ReportsAnalytics />} />
             <Route
               path="/reports/generate"
               element={
