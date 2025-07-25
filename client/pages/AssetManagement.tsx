@@ -583,16 +583,16 @@ export default function AssetManagement() {
           {/* Assets Table */}
           <Card>
             <CardHeader>
-              <CardTitle>Asset Inventory ({filteredAssets.length})</CardTitle>
-              <CardDescription>
-                <div className="flex items-center gap-4">
-                  <span>Track and manage all organizational assets</span>
-                  <Button variant="outline" size="sm">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Sync with Portal
-                  </Button>
+              <div className="flex items-center justify-between">
+                <div>
+                  <CardTitle>Asset Inventory ({filteredAssets.length})</CardTitle>
+                  <CardDescription>Track and manage all organizational assets</CardDescription>
                 </div>
-              </CardDescription>
+                <Button variant="outline" size="sm">
+                  <ExternalLink className="w-4 h-4 mr-2" />
+                  Sync with Portal
+                </Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Table>
